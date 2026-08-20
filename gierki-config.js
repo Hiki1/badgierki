@@ -14,7 +14,7 @@ window.GIERKI_CONFIG = {
     { nazwa: 'Kort 1', format: 'mixt', gora: ['Marcin Z', 'Asia'], dol: ['Janek', 'Marysia'] },
     { nazwa: 'Kort 2', format: 'mixt', gora: ['Witek', 'Magda'], dol: ['Mikołaj', 'Monia'] },
     { nazwa: 'Kort 3', format: 'mixt', gora: ['Marti', 'Piotrek'], dol: ['Natalia', 'Czarek'] },
-    { nazwa: 'Kort 4', format: 'mixt', gora: ['Ewa'], dol: ['Mirka', 'Marcin B'] }
+    { nazwa: 'Kort 4', format: 'mixt', gora: ['Ewa'], dol: ['Marcin B'] }
   ],
 
   rezerwa: [],
