@@ -1,0 +1,465 @@
+:root {
+  --bg: #0f1113;
+  --bg-2: #171a1e;
+  --card: #1c2026;
+  --ink: #f2f5f7;
+  --ink-dim: #9aa5b1;
+  --accent: #ffd97a;
+  --alert: #ff8c1a;
+  --kort: #1f7a4d;
+  --kort-2: #17603c;
+  --linia: #ffffff;
+  --siatka: #e9edf1;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --pad-lg: 32px;
+  --pad-md: 20px;
+  --pad-sm: 12px;
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* --- komunikat o blednej konfiguracji --- */
+.blad {
+  margin: var(--pad-md);
+  padding: var(--pad-md);
+  border: 2px solid #ff6b6b;
+  border-radius: var(--radius-md);
+  background: #2a1417;
+  color: #ffd7d7;
+  font-weight: 600;
+}
+
+/* --- naglowek z terminem --- */
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(24px, 6vw, 56px) var(--pad-md) clamp(20px, 4vw, 40px);
+  text-align: center;
+  background: radial-gradient(120% 100% at 50% 0%, #21402f 0%, var(--bg) 70%);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 14px);
+  margin-bottom: 6px;
+}
+
+.logo-lotka {
+  width: clamp(46px, 11vw, 70px);
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.lotka-tlo { fill: var(--kort-2); }
+
+.lotka-obwodka {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.lotka-piora {
+  fill: #f4f8fb;
+  stroke: #8f9ba6;
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+
+.lotka-tasma {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+.lotka-korek {
+  fill: var(--accent);
+  stroke: #b3903c;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+
+.logo-tekst {
+  font-size: clamp(1.35rem, 5.5vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.logo-bad { color: var(--accent); }
+
+.hero-dzien {
+  margin: 12px 0 0;
+  font-size: clamp(1rem, 4vw, 1.35rem);
+  text-transform: capitalize;
+  color: var(--ink-dim);
+}
+
+.hero-data {
+  margin: 2px 0 0;
+  font-size: clamp(1.8rem, 8vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero-godziny {
+  margin: 10px 0 0;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.hero-odliczanie {
+  margin: 14px auto 0;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 217, 122, 0.12);
+  border: 1px solid rgba(255, 217, 122, 0.35);
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.hero-odliczanie.dzis {
+  background: rgba(46, 204, 113, 0.16);
+  border-color: rgba(46, 204, 113, 0.5);
+  color: #7ee2a8;
+}
+
+.hero-miejsce {
+  margin: 18px 0 0;
+  font-size: clamp(1rem, 3.6vw, 1.25rem);
+}
+
+.hero-miejsce-link {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.hero-miejsce-link:hover { border-bottom-color: var(--accent); }
+
+.hero-adres {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85em;
+  color: var(--ink-dim);
+}
+
+/* --- siatka kortow --- */
+.tresc {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--pad-md) var(--pad-md) var(--pad-lg);
+}
+
+.korty {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--pad-md);
+}
+
+.kort {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--pad-sm);
+}
+
+.kort-naglowek {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: var(--pad-sm);
+}
+
+.kort-nazwa { margin: 0; font-size: 0.95rem; font-weight: 700; white-space: nowrap; }
+
+.kort-format {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-dim);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --- rysunek kortu --- */
+.kort-plansza {
+  position: relative;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.kort-svg { display: block; width: 100%; height: auto; }
+
+.nawierzchnia { fill: var(--kort); }
+
+.linia {
+  stroke: var(--linia);
+  stroke-width: 0.07;
+  stroke-linecap: square;
+}
+
+.siatka {
+  stroke: var(--siatka);
+  stroke-width: 0.16;
+  stroke-dasharray: 0.12 0.1;
+}
+
+.kort--singiel .bok-debel,
+.kort--singiel .serwis-debel { opacity: 0.25; }
+
+.kort--debel .bok-singiel,
+.kort--mixt .bok-singiel { opacity: 0.35; }
+
+/* Nakladka HTML na SVG: padding 0.8/7.7 viewBoxa = 10.39% szerokosci w kazda strone. */
+.kort-nazwiska {
+  position: absolute;
+  inset: 0;
+  padding: 10.39%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  pointer-events: none;
+}
+
+.polowa {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.kort--singiel .polowa { grid-template-columns: 1fr; }
+
+.cwiartka {
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+}
+
+.cwiartka--pusta {
+  background: rgba(255, 140, 26, 0.34);
+  box-shadow: inset 0 0 0 2px var(--alert);
+}
+
+.gracz {
+  max-width: 100%;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  background: rgba(10, 20, 15, 0.72);
+  color: #fff;
+  font-size: clamp(0.62rem, 1vw + 0.35rem, 0.82rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: break-word;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.gracz--pusty {
+  background: rgba(10, 20, 15, 0.35);
+  color: #ffd7ab;
+  font-weight: 600;
+}
+
+/* --- pauzujacy --- */
+.rezerwa { margin-top: var(--pad-lg); }
+
+.rezerwa-tytul {
+  margin: 0 0 var(--pad-sm);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-dim);
+}
+
+.rezerwa-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rezerwa-lista li {
+  padding: 6px 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: var(--ink-dim);
+  font-weight: 600;
+}
+
+/* --- platnosc --- */
+.platnosc { margin-top: var(--pad-lg); }
+
+.platnosc-tytul {
+  margin: 0 0 var(--pad-sm);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-dim);
+}
+
+.platnosc-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pad-md);
+  padding: var(--pad-md);
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+}
+
+.platnosc-pole,
+.platnosc-wynik {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 190px;
+}
+
+.platnosc-etykieta {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+}
+
+.platnosc-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--bg-2);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+}
+
+.platnosc-input:focus-within { border-color: var(--accent); }
+
+.platnosc-input input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.platnosc-input input:focus { outline: none; }
+
+.platnosc-input input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.platnosc-waluta {
+  color: var(--ink-dim);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.platnosc-kwota {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.platnosc-podpis {
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+}
+
+.platnosc-notka {
+  margin: var(--pad-sm) 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* --- archiwum --- */
+.archiwum { margin-top: var(--pad-lg); }
+
+.archiwum-tytul {
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-dim);
+}
+
+.archiwum-tytul:hover { color: var(--ink); }
+
+.archiwum-wpis { margin-top: var(--pad-md); }
+
+.archiwum-data {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* tylko pierwsza litera - nazwy miesiecy w polskim sa z malej */
+.archiwum-data::first-letter { text-transform: uppercase; }
+
+.archiwum-kwota {
+  margin: 0 0 var(--pad-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.archiwum-playlista {
+  display: inline-block;
+  margin: 0 0 var(--pad-sm);
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: var(--ink-dim);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.archiwum-playlista::before { content: "\25B6\FE0E"; margin-right: 7px; color: #ff4d4d; }
+
+.archiwum-playlista:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.korty--archiwum {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--pad-sm);
+}
+
+.korty--archiwum .kort { background: var(--bg-2); }
+
+@media (max-width: 600px) {
+  .korty { gap: var(--pad-sm); }
+}
+
+@media (min-width: 900px) {
+  .korty { gap: var(--pad-lg); }
+}

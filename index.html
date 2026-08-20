@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Badgierki - rozpiska gierek</title>
+<meta name="description" content="Rozpiska gierek badmintonowych: termin, miejsce i ustawienie graczy na kortach.">
+<link rel="stylesheet" href="gierki.css">
+</head>
+<body>
+
+<div id="blad" class="blad" hidden></div>
+
+<header class="hero">
+  <div class="logo">
+    <svg class="logo-lotka" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <circle class="lotka-tlo" cx="32" cy="32" r="31"/>
+      <circle class="lotka-obwodka" cx="32" cy="32" r="30"/>
+      <g transform="rotate(-18 32 32)">
+        <g class="lotka-piora">
+          <path d="M32 41 L29.5 11 C38.5 19 37 31 32 41 Z" transform="rotate(-26 32 52)"/>
+          <path d="M32 41 C28 31 27 20 32 11 C37 20 36 31 32 41 Z" transform="rotate(-13 32 52)"/>
+          <path d="M32 41 C28 31 27 20 32 11 C37 20 36 31 32 41 Z"/>
+          <path d="M32 41 C28 31 27 20 32 11 C37 20 36 31 32 41 Z" transform="rotate(13 32 52)"/>
+          <path d="M32 41 L34.5 11 C25.5 19 27 31 32 41 Z" transform="rotate(26 32 52)"/>
+        </g>
+        <path class="lotka-tasma" d="M20 26 Q32 32.5 44 26"/>
+        <path class="lotka-korek" d="M25 39.8 L25.2 45.4 C25.2 50 28.4 52.8 32 52.8 C35.6 52.8 38.8 50 38.8 45.4 L39 39.8 Z"/>
+      </g>
+    </svg>
+    <span class="logo-tekst"><span class="logo-bad">Bad</span>gierki</span>
+  </div>
+  <p id="hero-dzien" class="hero-dzien"></p>
+  <h1 id="hero-data" class="hero-data"></h1>
+  <p id="hero-godziny" class="hero-godziny"></p>
+  <p id="hero-odliczanie" class="hero-odliczanie"></p>
+  <p class="hero-miejsce">
+    <a id="hero-miejsce-link" class="hero-miejsce-link" target="_blank" rel="noopener noreferrer"></a>
+    <span id="hero-adres" class="hero-adres"></span>
+  </p>
+</header>
+
+<main class="tresc">
+  <section id="korty" class="korty"></section>
+
+  <section id="rezerwa" class="rezerwa" hidden>
+    <h2 class="rezerwa-tytul">Pauzują</h2>
+    <ul id="rezerwa-lista" class="rezerwa-lista"></ul>
+  </section>
+
+  <section class="platnosc">
+    <h2 class="platnosc-tytul">Płatność</h2>
+    <div class="platnosc-panel">
+      <label class="platnosc-pole" for="kwota">
+        <span class="platnosc-etykieta">Zapłacono za korty</span>
+        <span class="platnosc-input">
+          <input id="kwota" type="text" inputmode="decimal" autocomplete="off" placeholder="np. 202" aria-describedby="platnosc-stawka">
+          <span class="platnosc-waluta">zł</span>
+        </span>
+        <span id="platnosc-stawka" class="platnosc-podpis"></span>
+      </label>
+      <div class="platnosc-wynik">
+        <span class="platnosc-etykieta">Na osobę</span>
+        <strong id="kwota-na-osobe" class="platnosc-kwota">&mdash;</strong>
+        <span id="platnosc-opis" class="platnosc-podpis"></span>
+      </div>
+    </div>
+    <p class="platnosc-notka">Płatność najlepiej blikiem</p>
+  </section>
+
+  <details id="archiwum" class="archiwum" hidden>
+    <summary id="archiwum-tytul" class="archiwum-tytul">Poprzednie terminy</summary>
+    <div id="archiwum-lista"></div>
+  </details>
+</main>
+
+<template id="tpl-kort">
+  <article class="kort">
+    <div class="kort-naglowek">
+      <h2 class="kort-nazwa"></h2>
+      <span class="kort-format"></span>
+    </div>
+    <div class="kort-plansza">
+      <!-- viewBox w metrach: kort 6.1 x 13.4 plus 0.8 marginesu z kazdej strony -->
+      <svg class="kort-svg" viewBox="-0.8 -0.8 7.7 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <rect class="nawierzchnia" x="-0.8" y="-0.8" width="7.7" height="15" rx="0.35"/>
+        <line class="linia" x1="0" y1="0" x2="6.1" y2="0"/>
+        <line class="linia" x1="0" y1="13.4" x2="6.1" y2="13.4"/>
+        <line class="linia bok-debel" x1="0" y1="0" x2="0" y2="13.4"/>
+        <line class="linia bok-debel" x1="6.1" y1="0" x2="6.1" y2="13.4"/>
+        <line class="linia bok-singiel" x1="0.46" y1="0" x2="0.46" y2="13.4"/>
+        <line class="linia bok-singiel" x1="5.64" y1="0" x2="5.64" y2="13.4"/>
+        <line class="linia" x1="0" y1="4.72" x2="6.1" y2="4.72"/>
+        <line class="linia" x1="0" y1="8.68" x2="6.1" y2="8.68"/>
+        <line class="linia serwis-debel" x1="0" y1="0.76" x2="6.1" y2="0.76"/>
+        <line class="linia serwis-debel" x1="0" y1="12.64" x2="6.1" y2="12.64"/>
+        <line class="linia" x1="3.05" y1="0" x2="3.05" y2="4.72"/>
+        <line class="linia" x1="3.05" y1="8.68" x2="3.05" y2="13.4"/>
+        <line class="siatka" x1="-0.55" y1="6.7" x2="6.65" y2="6.7"/>
+      </svg>
+      <div class="kort-nazwiska">
+        <div class="polowa polowa--gora"></div>
+        <div class="polowa polowa--dol"></div>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="gierki-config.js"></script>
+<script src="gierki.js"></script>
+</body>
+</html>
